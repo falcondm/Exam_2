@@ -5,25 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <link type="image/x-icon" rel="shortcut icon" href="./img/favicon/favicon.ico" >
+    <link type="image/png" sizes="16x16" rel="icon" href="./img/favicon/favicon-16x16.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="./img/favicon/favicon-32x32.png">
+    <link type="image/png" sizes="64x64" rel="icon" href="./img/favicon/favicon-64x64.png">
+    <link type="image/png" sizes="96x96" rel="icon" href="./img/favicon/favicon-96x96.png">
     <title>Monticello</title>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="about">
         <div class="header__menu">
             <div class="logo-container">
                 <img src="./img/desktop/Logo.png" alt="">
             </div>
             <nav class="nav">
                 <ul class="nav__menu menu">
-                    <li class="menu__item active"><a href="">About us</a></li>
-                    <li class="menu__item"><a href="#projects">Projects</a></li>
-                    <li class="menu__item"><a href="#news">News</a></li>
-                    <li class="menu__item"><a href="">Contact</a></li>
+                    <li class="menu__item"><a class="menu__link active" href="#about">About us</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#projects">Projects</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#news">News</a></li>
+                    <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
                 </ul>
                 <ul class="nav__menu_2 menu">
-                    <li class="menu__item"><a href=""><div class="icon-container icon_1"><img src="./img/svg/facebook.svg" alt=""></div></a></li>
-                    <li class="menu__item"><a href=""><div class="icon-container icon_2"><img src="./img/svg/twitter.svg" alt=""></div></a></li>
-                    <li class="menu__item"><a href=""><div class="icon-container icon_3"><img src="./img/svg/instagram.svg" alt=""></div></a></li>
+                    <li class="menu__item"><a href=""><div class="icon-container icon_1"><i class="fab fa-facebook-f"></i></div></a></li>
+                    <li class="menu__item"><a href=""><div class="icon-container icon_2"><i class="fab fa-twitter"></i></div></a></li>
+                    <li class="menu__item"><a href=""><div class="icon-container icon_3"><i class="fab fa-instagram"></i></div></a></li>
                 </ul>
             </nav>
         </div>
@@ -67,7 +73,7 @@
                         <p class="block__description">One world</p>
                         <h3 class="block__title">Trade center</h3>
                         <p class="block__text">Increasing prosperity in our lives can be accomplished by having the right frame of mind. The truth is, our thoughts are very powerful.</p>
-                        <button class="block__btn">MORE DETAILS</button>
+                        <button type="submit" class="block__btn">MORE DETAILS</button>
                         <a class="block__adrlink" href=""><div><img src="./img/svg/map-marker.svg" alt=""></div> New York City, United States - 1776 feet</a>
                     </div>
                     <div class="img-container img-cnt-1"><img src="./img/desktop/projects_img_1.png" alt=""></div>
@@ -77,7 +83,7 @@
                         <p class="block__description">International</p>
                         <h3 class="block__title">Commerce centre</h3>
                         <p class="block__text">Successful businesses have many things in common, today we’ll look at the big ‘R’ of recognition and how a digital advertising network may help.</p>
-                        <button class="block__btn">MORE DETAILS</button>
+                        <button type="submit" class="block__btn">MORE DETAILS</button>
                         <a class="block__adrlink" href=""><div><img src="./img/svg/map-marker.svg" alt=""></div> Hong Kong - 1588 Feet</a>
                     </div>
                     <div class="img-container img-cnt-2"><img src="./img/desktop/projects_img_2.png" alt=""></div>
@@ -200,10 +206,59 @@
                         </div>
                     </div>
                 </div>
-                <button class="block__btn">See More</button>
+                <button type="submit" class="block__btn">See More</button>
             </div>
         </section>
+        <section id="map"></section>
     </main>
+    <footer class="footer">
+        <div class="formblock" id="contact">
+            <div class="img-container">
+                <img src="./img/desktop/contact_background.png" alt="">
+            </div>
+            <h2 class="formblock__title title">Get in Touch</h2>
+            <div class="formblock__container">
+                <div class="formblock__textblock textblock">
+                    <p class="textblock__text"><i class="fas fa-map-marker-alt"></i>  91 Nolan Extensions Suite 670</p>
+                    <p class="textblock__text"><i class="fas fa-phone"></i>  +001 356-868-2454</p>
+                    <p class="textblock__text"><i class="fas fa-inbox"></i>  gahuy93@gmail.com</p>
+                    <p class="textblock__text"><i class="far fa-clock"></i>  From 07:05AM to 19:30PM</p>
+                </div>
+                <form class="form" action="#" method="GET">
+                    <input required autocomplete="off" placeholder="Name" class="form__name input" type="text" name="name">
+                    <div></div>
+                    <input required autocomplete="off" placeholder="Email" class="form__email input" type="email" name="email">
+                    <div></div>
+                    <button class="form__button block__btn" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="img-container footbg">
+            <img src="./img/desktop/footer_background.png" alt="">
+        </div>
+        <section class="footer__block block">
+            <div class="block__content">
+                <div class="logo-container">
+                    <img src="./img/desktop/Logo.png" alt="">
+                </div>
+                <nav class="nav">
+                    <ul class="nav__menu_2 menu">
+                        <li class="menu__item"><a href=""><div class="icon-container icon_1"><i class="fab fa-facebook-f"></i></div></a></li>
+                        <li class="menu__item"><a href=""><div class="icon-container icon_2"><i class="fab fa-twitter"></i></div></a></li>
+                        <li class="menu__item"><a href=""><div class="icon-container icon_3"><i class="fab fa-instagram"></i></div></a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer__textblock">
+                <p class="copyright">Copyrights © 2017 Monticello</p>
+                <p class="withlove">Made with &#10084; by Ga Huy</p>
+            </div>
+        </section>
+    </footer>
+    <div id="arrowTop" hidden></div>
+    
+    <script src="./js/maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK61Hnbvtm7hlCU8v3CrYwTi3--tlrwTM&callback=initMap"></script>
     <script src="./js/jquery.js"></script>
     <script src="./js/slick.min.js"></script>
     <script src="./js/main.js"></script>
