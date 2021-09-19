@@ -32,6 +32,12 @@ $(document).ready(function() {
         infinite: true,
         responsive: [
             {
+                breakpoint: 1400,
+                settings: {
+                  arrows: false,
+                }
+            },
+            {
               breakpoint: 1200,
               settings: {
                 slidesToShow: 2,
@@ -69,8 +75,8 @@ $(document).ready(function() {
         $('.header').css('background',`linear-gradient(45deg, rgba(${arr[0]},${arr[1]},${arr[2]},1) 0%, rgba(${arr[3]},${arr[4]},${arr[5]},1) 100%)`);
     });
 
-    $('.slick-arrow').text('');
-    $('.slick-dots > li > button').text('');
+    $('.slick-arrow').text(null);
+    $('.slick-dots > li > button').text(null);
 
     let menuWidth = $('.header__menu').outerWidth();
     let headerText = $('.header__textblock').outerWidth();
@@ -119,7 +125,7 @@ let moveBlock = [
         top: 70,
     }
 ]
-    
+
 $(document).scroll(function(){
     if ($(document).scrollTop() !== 0) {
         $('#arrowTop').css('display','flex');
@@ -142,8 +148,8 @@ $(document).scroll(function(){
         }
     })
     
-    $('.slick-arrow').text('');
-    $('.slick-dots > li > button').text('');
+    $('.slick-arrow').text(null);
+    $('.slick-dots > li > button').text(null);
     let fromTop = $(this).scrollTop() + 30;
 
     let cur = scrollItems.map(function(){
@@ -170,7 +176,8 @@ $(document).scroll(function(){
 });
 
 $(window).resize(function() {
-    $('.slick-dots > li > button').text('');
+    $('.slick-arrow').text(null);
+    $('.slick-dots > li > button').text(null);
     let menuWidth = $('.header__menu').outerWidth();
     let headerText = $('.header__textblock').outerWidth();
     let formWidth = $('.formblock').outerWidth();
