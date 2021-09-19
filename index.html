@@ -19,7 +19,15 @@
             <div class="logo-container">
                 <img src="./img/desktop/Logo.png" alt="">
             </div>
-            <nav class="nav">
+            <input id="hamburger" class="hamburger" type="checkbox"/>
+            <label class="hamburger" for="hamburger">
+                <i></i>
+            </label>
+            <div class="menu-label">
+                <p class="close">close</p>
+                <p class="open">menu</p>
+            </div>
+            <nav class="nav" id="nav">
                 <ul class="nav__menu menu">
                     <li class="menu__item"><a class="menu__link active" href="#about">About us</a></li>
                     <li class="menu__item"><a class="menu__link" href="#projects">Projects</a></li>
@@ -27,9 +35,9 @@
                     <li class="menu__item"><a class="menu__link" href="#contact">Contact</a></li>
                 </ul>
                 <ul class="nav__menu_2 menu">
-                    <li class="menu__item"><a href=""><div class="icon-container icon_1"><i class="fab fa-facebook-f"></i></div></a></li>
-                    <li class="menu__item"><a href=""><div class="icon-container icon_2"><i class="fab fa-twitter"></i></div></a></li>
-                    <li class="menu__item"><a href=""><div class="icon-container icon_3"><i class="fab fa-instagram"></i></div></a></li>
+                    <li class="menu__item"><a target="_blank" class="menu__link" href="https://google.com/"><div class="icon-container icon_1"><i class="fab fa-facebook-f"></i></div></a></li>
+                    <li class="menu__item"><a class="menu__link" href=""><div class="icon-container icon_2"><i class="fab fa-twitter"></i></div></a></li>
+                    <li class="menu__item"><a class="menu__link" href=""><div class="icon-container icon_3"><i class="fab fa-instagram"></i></div></a></li>
                 </ul>
             </nav>
         </div>
@@ -209,7 +217,7 @@
                 <button type="submit" class="block__btn">See More</button>
             </div>
         </section>
-        <section id="map"></section>
+        <div id="map"></div>
     </main>
     <footer class="footer">
         <div class="formblock" id="contact">
@@ -236,7 +244,7 @@
         <div class="img-container footbg">
             <img src="./img/desktop/footer_background.png" alt="">
         </div>
-        <section class="footer__block block">
+        <div class="footer__block block">
             <div class="block__content">
                 <div class="logo-container">
                     <img src="./img/desktop/Logo.png" alt="">
@@ -253,7 +261,7 @@
                 <p class="copyright">Copyrights © 2017 Monticello</p>
                 <p class="withlove">Made with &#10084; by Ga Huy</p>
             </div>
-        </section>
+        </div>
     </footer>
     <div id="arrowTop" hidden></div>
     
