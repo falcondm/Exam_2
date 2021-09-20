@@ -165,15 +165,16 @@ a {
                     text-align: center;
                 }
             }
-            img {
-                @include width-height(100%, 100vh);
-                opacity: 0.1;
-                @media screen and (max-width: 576px) {
-                    @include width-height($height: 100vh);
+            picture {
+                img {
+                    @include width-height(100%, 100vh);
+                    opacity: 0.1;
+                    @media screen and (max-width: 576px) {
+                        @include width-height($height: 100vh);
+                    }
                 }
             }
         }
-        
     }
 }
 
@@ -457,6 +458,7 @@ a {
 }
 .news {
     @include displaySet(flex, center, center, column);
+    @include position(relative);
     padding: 160px calc(50vw - (1170px / 2));
     background: linear-gradient(45deg, rgba(60,127,212,1) 0%, rgba(36,204,250,1) 100%);
     @media screen and (max-width: 1200px) {
