@@ -77,13 +77,6 @@ $(document).ready(function() {
 
     $('.slick-arrow').text(null);
     $('.slick-dots > li > button').text(null);
-
-    let menuWidth = $('.header__menu').outerWidth();
-    let headerText = $('.header__textblock').outerWidth();
-    let formWidth = $('.formblock').outerWidth();
-    $('.formblock').css('margin-left',(-formWidth / 2) + 'px');
-    $('.header__menu').css('margin-left',(-menuWidth / 2) + 'px');
-    $('.header__textblock').css('margin-left',(-headerText / 2) + 'px');   
 })
 
 $('.arrow-icon').click(function(e) {
@@ -150,6 +143,7 @@ $(document).scroll(function(){
     
     $('.slick-arrow').text(null);
     $('.slick-dots > li > button').text(null);
+
     let fromTop = $(this).scrollTop() + 30;
 
     let cur = scrollItems.map(function(){
@@ -177,13 +171,7 @@ $(document).scroll(function(){
 
 $(window).resize(function() {
     $('.slick-arrow').text(null);
-    $('.slick-dots > li > button').text(null);
-    let menuWidth = $('.header__menu').outerWidth();
-    let headerText = $('.header__textblock').outerWidth();
-    let formWidth = $('.formblock').outerWidth();
-    $('.formblock').css('margin-left',(-formWidth / 2) + 'px');
-    $('.header__menu').css('margin-left',(-menuWidth / 2) + 'px');
-    $('.header__textblock').css('margin-left',(-headerText / 2) + 'px');   
+    $('.slick-dots > li > button').text(null);  
 })
 
 $(document).ready(function() {

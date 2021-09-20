@@ -9,109 +9,84 @@ body {
     font-family: 'GothamBook', sans-serif;
 }
 a {
-    display: flex;
+    @include displaySet(flex);
     text-decoration: none;
     text-transform: uppercase;
     color: #fff;
 }
 #arrowTop {
-    z-index: 100;
-    position: fixed;
+    @include position(fixed, $bottom: 50px, $right: 50px, $z_index: 4);
+    @include displaySet(none, center, center);
+    @include width-height(50px, 50px);
     cursor: pointer;
-    width: 50px;
-    height: 50px;
-    bottom: 50px;
-    right: 50px;
     background-color: #252022;
     border-radius: 50%;
-    display: none;
-    align-items: center;
-    justify-content: center;
     @media screen and (max-width: 576px) {
-        bottom: 25px;
-        right: 25px;
+        @include position($bottom: 25px, $right: 25px);
     }
 }
 
 #arrowTop::before {
-  content: '';
-  width: 50px;
-  height: 25px;
-  background: url('../img/svg/chevron-down-solid.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: rotateX(180deg)
+    @include width-height(50px, 25px);
+    content: '';
+    background: url('../img/svg/chevron-down-solid.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotateX(180deg)
 }
 .header {
-    position: relative;
-    height: 100vh;
+    @include position(relative);
+    @include width-height($height: 100vh);
     background: linear-gradient(45deg, rgba(85,183,255,1) 0%, rgba(126,90,255,1) 100%);
     @media screen and (max-width: 576px) {
-        height: 70vh;
+        @include width-height($height: 70vh);
     }
     .header__menu {
-        display: flex;
-        justify-content: space-between;
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        top: 50px;
-        margin-left: calc(-1325px / 2);
-        max-width: 1325px;
-        width: 100%;
+        @include сentering-xy();
+        @include position($top: 50px, $z_index: 1);
+        @include displaySet(flex, space-between);
+        @include width-height(100%, $max-width: 1325px);
         padding: 0 25px;
         input.hamburger {
-            display: none;
+            @include displaySet(none);
         }
         label.hamburger {
-            display: none;
+            @include displaySet(none);
             @media screen and (max-width: 992px) {
-                display: flex;
-                position: absolute;
-                top: 7px;
-                right: 25px;
-            }
-            @media screen and (max-width: 576px) {
-                top: 0;
+                @include displaySet(flex);
+                @include position(absolute, $top: 0, $right: 25px);
             }
         }
         .menu-label {
-            display: none;
+            @include displaySet(none);
             @media screen and (max-width: 992px) {
-                display: flex;
+                @include position($top: 0);
+                @include displaySet(flex);
             }
         }
         .logo-container {
-            display: flex;
+            @include displaySet(flex);
             img {
                 @media screen and (max-width: 576px) {
-                    width: 180px;
+                    @include width-height(180px);
                 }
             }
         }
         .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 845px;
-            width: 100%;
+            @include displaySet(flex, space-between, center);
+            @include width-height(100%, $max-width: 845px);
             padding-left: 25px;
             &__menu {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                max-width: 600px;
-                width: 100%;
+                @include displaySet(flex, space-between, center);
+                @include width-height(100%, $max-width: 600px);
                 .menu__item {
-                    position: relative;
+                    @include position(relative);
                     &::after {
-                        content: '';
+                        @include pseudo();
+                        @include position($top: -15px);
+                        @include width-height(100%);
                         border-bottom: 2px solid #fff;
-                        width: 100%;
-                        display: block;
                         opacity: 0;
-                        position: absolute;
-                        top: -15px;
                     }
                     &:hover {
                         &::after {
@@ -121,16 +96,15 @@ a {
                         }
                     }
                     .menu__link {
+                        @include displaySet($align-items: center);
                         cursor: pointer;
-                        align-items: center;
                         &::before {
+                            @include displaySet(flex);
+                            @include width-height(9px, 9px);
                             content: '';
-                            width: 9px;
-                            height: 9px;
                             border: 1px solid #fff;
                             border-radius: 50%;
                             margin-right: 15px;
-                            display: flex;
                         }
                     }
                     .active {
@@ -143,16 +117,10 @@ a {
         }
     }
     .arrow-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        bottom: 50px;
+        @include position(absolute, $left: 50%, $bottom: 50px, $z_index: 1);
+        @include displaySet(flex, center, center);
+        @include width-height(40px, 40px);
         margin-left: -20px;
-        width: 40px;
-        height: 40px;
         border: 1px solid #ccddfb;
         border-radius: 50%;
         &:hover {
@@ -160,39 +128,29 @@ a {
             transform: translateY(-10px);
         }
         img {
-            width: 10px;
-            height: 11px;
+            @include width-height(10px, 11px);
         }
     }
     .slider1 {
-        width: 100%;
-        height: 800px;
-        position: relative;
+        @include width-height(100%, 800px);
+        @include position(relative);
         .slick-dots {
-            height: 206px;
-            right: 20px;
-            top: 50%;
+            @include width-height($height: 206px);
+            @include position($top: 50%, $right: 20px);
             margin-top: -103px;
         }
         .slick-track {
-            display: flex;
+            @include displaySet(flex);
         }
         .slider__item {
-            position: relative;
+            @include position(relative);
             .header__textblock {
-                position: absolute;
-                left: 50%;
-                margin-left: -425px;
-                top: 50%;
+                @include сentering-xy();
+                @include position($z_index: 1);
+                @include displaySet(flex, center, center, column);
+                @include width-height(100%, $max-width: 1000px);
                 margin-top: -56px;
-                z-index: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 text-transform: uppercase;
-                max-width: 1000px;
-                width: 100%;
                 padding: 0 5px;
                 @media screen and (max-width: 576px) {
                     padding-top: 20px;
@@ -210,11 +168,10 @@ a {
                 }
             }
             img {
-                width: 100%;
-                height: 100vh;
+                @include width-height(100%, 100vh);
                 opacity: 0.1;
                 @media screen and (max-width: 576px) {
-                    height: 70vh;
+                    @include width-height($height: 100vh);
                 }
             }
         }
@@ -223,17 +180,12 @@ a {
 }
 
 .nav__menu_2 {
-    display: flex;
-    justify-content: space-between;
-    max-width: 165px;
-    width: 100%;
+    @include displaySet(flex, space-between);
+    @include width-height(100%, $max-width: 165px);
     padding-left: 25px;
     .icon-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
+        @include displaySet(flex, center, center);
+        @include width-height(40px, 40px);
         border: 1px solid #fff;
         border-radius: 50%;
         transition: 0.7s ease;
@@ -243,24 +195,21 @@ a {
     }
 }
 .menu {
-    display: flex;
+    @include displaySet(flex);
     list-style-type: none;
 }
 .slick-dots {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
+    @include displaySet(flex, space-between, $flex-direction: column);
+    @include position(absolute);
     list-style-type: none;
     .slick-active {
         border-radius: 50%;
         background-color: #fff;
     }
     button {
-        display: block;
+        @include displaySet(block);
         border-radius: 50%;
-        width: 9px;
-        height: 9px;
+        @include width-height(9px, 9px);
         background-color: transparent;
         border: 1px solid #fff;
         &:hover {
@@ -269,29 +218,25 @@ a {
     }
 }
 .title {
+    @include position(relative);
     font-size: 44px;
     text-align: center;
-    position: relative;
     text-transform: uppercase;
     font-family: 'GothamBold', sans-serif;
     @media screen and (max-width: 576px) {
         font-size: 40px;
     }
     &::before {
-        content: "";
-        width: 100px;
+        @include pseudo();
+        @include position($left: 50%, $top: -20px);
+        @include width-height(100px);
         border-bottom: 1px solid #2c4058;
-        display: block;
-        position: absolute;
-        left: 50%;
         margin-left: -50px;
-        top: -20px;
     }
 }
 .block__btn {
-    width: 190px;
-    height: 50px;
-    position: relative;
+    @include position(relative);
+    @include width-height(190px, 50px);
     background-color: transparent;
     border: 1px solid #2c4058;
     overflow: hidden;
@@ -301,23 +246,19 @@ a {
         margin: 0 auto;
     }
     &::after, &::before {
-        z-index: -1;
+        @include pseudo();
+        @include position($z_index: -1, $top: -1px);
+        @include width-height(190px, 50px);
         transition: all 1s ease;
-        top: -1px;
         background: #2c4058 ;
-        position: absolute;
-        width: 190px;
-        height: 50px;
         -webkit-transform: skew(45deg);    
         transform: skew(45deg);
-        display: block;
-        content: '';
     }
     &::after {
-        left: -120%;
+        @include position($left: -120%);
     }
     &::before {
-        right: -120%;
+        @include position($right: -120%);
     }
     &:hover {
         &::after {
@@ -334,10 +275,10 @@ a {
     }
 }
 .projects {
+    @include position(relative);
     padding: 140px calc(50vw - (1170px / 2));
     color: #2c4058;
     text-transform: uppercase;
-    position: relative;
     @media screen and (max-width: 1200px) {
         padding: 80px calc(50vw - (1170px / 2));
     }
@@ -345,11 +286,9 @@ a {
         padding: 60px calc(50vw - (1170px / 2));
     }
     @media screen and (max-width: 576px) {
+        @include displaySet(flex, space-between, $flex-direction: column);
         padding: 60px calc(50vw - (1170px / 2));
         padding-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
     }
     .content {
         @media screen and (max-width: 576px) {
@@ -361,23 +300,21 @@ a {
             }
         }
         .box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 470px;
+            @include displaySet(flex, space-between, center);
+            @include width-height($height: 470px);
             padding: 0 40px;
             @media screen and (max-width: 768px) {
-                flex-direction: column-reverse;
+                @include displaySet($flex-direction: column-reverse);
             }
             @media screen and (max-width: 576px) {
                 padding: 0 10px;
             }
             @media screen and (max-width: 576px) {
-                height: fit-content;
+                @include width-height($height: fit-content);
             }
         }
         .content__box_1 {
-            flex-direction: row-reverse;
+            @include displaySet($flex-direction: row-reverse);
             margin-top: 170px;
             margin-bottom: 210px;
             @media screen and (max-width: 1200px) {
@@ -387,7 +324,7 @@ a {
                 margin: 20px 0;
             }
             @media screen and (max-width: 768px) {
-                flex-direction: column-reverse;
+                @include displaySet($flex-direction: column-reverse);
                 margin-top: 170px;
             }
             @media screen and (max-width: 576px) {
@@ -429,26 +366,19 @@ a {
             }
         }
         .block {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            width: 470px;
-            height: 350px;
+            @include displaySet(flex, space-evenly, $flex-direction: column);
+            @include width-height(470px, 350px);
             @media screen and (max-width: 992px) {
-                height: 400px;
+                @include width-height($height: 400px);
             }
             @media screen and (max-width: 768px) {
-                padding-left: 0;
-                width: 500px;
-            }
-            @media screen and (max-width: 768px) {
+                @include width-height(500px);
                 padding-top: 15px;
-                width: 500px;
+                padding-left: 0;
             }
             @media screen and (max-width: 576px) {
-                width: 100%;
+                @include width-height(100%, fit-content);
                 padding: 20px 0;
-                height: fit-content;
             }
             &__description {
                 font-size: 22px;
@@ -469,9 +399,7 @@ a {
                 text-transform: none;
                 font-style: italic;
                 div {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    @include displaySet(flex, center, center);
                     margin-right: 10px;
                 }
             }
@@ -487,33 +415,28 @@ a {
             }
         }
         .img-container {
-            max-width: 630px;
-            width: 100%;
-            height: 470px;
-            position: absolute;
+            @include position(absolute);
+            @include width-height(100%, 470px, 630px);
             @media screen and (max-width: 1200px) {
-                max-width: 500px;
-                height: 350px;
-                position:static;
+                @include position(static);
+                @include width-height($height: 350px, $max-width: 500px);
             }
             @media screen and (max-width: 576px) {
-                max-width: 600px;
+                @include width-height($max-width: 600px);
             }
             img {
-                position: absolute;
+                @include position(absolute);
                 @media screen and (max-width: 1200px) {
-                    width: 100%;
-                    height: 350px;
-                    position:static;
+                    @include position(static);
+                    @include width-height(100%, 350px);
                     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.4);
                 }
             }
         }
         .img-cnt-1 {
+            @include position($left: 0, $top: 290px);
             box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
             background-color: #55b7ff;
-            left: 0;
-            top: 290px;
             @media screen and (max-width: 1200px) {
                 margin-bottom: 150px;
             }
@@ -522,10 +445,9 @@ a {
             }
         }
         .img-cnt-2 {
+            @include position($right: 0, $bottom: 210px);
             box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
             background-color: #7e5aff;
-            right: 0;
-            bottom: 210px;
             @media screen and (max-width: 1200px) {
                 margin-bottom: 180px;
             }
@@ -536,12 +458,8 @@ a {
     }
 }
 .news {
+    @include displaySet(flex, center, center, column);
     padding: 160px calc(50vw - (1170px / 2));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     background: linear-gradient(45deg, rgba(60,127,212,1) 0%, rgba(36,204,250,1) 100%);
     @media screen and (max-width: 1200px) {
         padding: 80px calc(50vw - (1170px / 2));
@@ -550,25 +468,20 @@ a {
         padding: 60px calc(50vw - (1170px / 2));
     }
     .slider2 {
-        height: 515px;
-        max-width: 1170px;
-        width: 100%;
-        position: relative;
+        @include position(relative);
+        @include width-height(100%, 515px, 1170px);
         .slick-dots {
-            flex-direction: row;
-            bottom: -2.5rem;
-            left: 50%;
+            @include position($left: 50%, $bottom: -2.5rem);
+            @include displaySet($flex-direction: row);
+            @include width-height(206px);
             margin-left: -106px;
-            width: 206px;
             @media screen and (max-width: 1200px) {
-                bottom: -7%;
+                @include position($bottom: -7%);
             }
         }
         .slick-arrow {
-            position: absolute;
-            z-index: 1;
-            width: 40px;
-            height: 40px;
+            @include position(absolute, $z_index: 1);
+            @include width-height(40px, 40px);
             border-radius: 50%;
             background-color: transparent;
             border: 1px solid #fff;
@@ -580,48 +493,38 @@ a {
             }
         }
         .slick-prev {
+            @include position($left: -100px, $top: 50%);
             background-image: url('../img/svg/chevron-left-solid.svg');
-            left: -100px;
-            top: 50%;
             margin-top: -20px;
         }
         .slick-next {
+            @include position($right: -100px, $top: 50%);
             background-image: url('../img/svg/chevron-right-solid.svg');
-            right: -100px;
-            top: 50%;
             margin-top: -20px;
         }
         .slick-list {
-            height: 515px;
-            width: 100%;
+            @include width-height(100%, 515px);
             overflow: hidden;
             .slick-track {
-                height: 515px;
-                display: flex !important;
-                flex-wrap: wrap;
-                justify-content: space-around;
+                @include displaySet(flex !important, space-between);
+                @include width-height($height: 515px);
                 .item {
-                    width: 370px !important;
-                    height: 515px;
+                    @include width-height(370px !important, 515px);
                     background-color: #fff;
                     color: #2c4058;
                     @media screen and (max-width: 576px) {
-                        width: 300px !important;
+                        @include width-height(300px !important);
                     }
                     .img-container {
-                        width: 370px;
-                        height: 240px;
+                        @include width-height(370px, 240px);
                         @media screen and (max-width: 576px) {
-                            width: 300px;
+                            @include width-height(300px);
                         }
                         &:hover {
                             &::before {
-                                content: "";
-                                width: 370px;
-                                height: 240px;
-                                position: absolute;
-                                display: block;
-                                z-index: 1;
+                                @include pseudo();
+                                @include width-height(370px, 240px);
+                                @include position($z_index: 1);
                                 background-image: url('../img/desktop/plus_icon.png');
                                 background-repeat: no-repeat;
                                 background-position-x: center;
@@ -630,19 +533,16 @@ a {
                             cursor: pointer;
                         }
                         img {
-                            width: 100%;
-                            position: relative;
+                            @include width-height(100%);
+                            @include position(relative);
                             @media screen and (max-width: 576px) {
-                                width: 300px;
-                                height: 240px;
+                                @include width-height(300px, 240px);
                             }
                         }
                     }
                     .text-container {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        height: 275px;
+                        @include displaySet(flex, space-between, $flex-direction: column);
+                        @include width-height($height: 275px);
                         padding: 20px;
                     }
                     &__title {
@@ -655,10 +555,8 @@ a {
                         font-family: 'Open Sans', sans-serif;
                     }
                     &__authorbox {
-                        display: flex;
-                        align-items: center;
-                        width: 100%;
-                        height: 60px;
+                        @include displaySet(flex, $align-items: center);
+                        @include width-height(100%, 60px);
                         .avtr-container {
                             margin-right: 20px;
                             img {
@@ -689,22 +587,16 @@ a {
         }
     }
     .news__bg-color  {
+        @include position(absolute, $bottom: 0, $left: 0);
+        @include width-height(100%);
         opacity: 0.1;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 0;
         img {
-            width: 100%;
+            @include width-height(100%);
         }
     }
-    
 }
 .gallery {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    @include displaySet(flex, space-around, center);
     padding: 160px calc(50vw - (1170px / 2));
     @media screen and (max-width: 1200px) {
         padding: 80px calc(50vw - (1170px / 2));
@@ -716,38 +608,29 @@ a {
         color: #2c4058;
     }
     .block {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        height: 680px;
-        max-width: 1170px;
-        width: 100%;
+        @include displaySet(flex, space-between, center, column);
+        @include width-height(100%, 680px, 1170px);
         padding: 0 10px;
         @media screen and (max-width: 1200px) {
-            height: 600px;
+            @include width-height($height: 600px);
         }
         @media screen and (max-width: 992px) {
-            height: fit-content;
+            @include width-height($height: fit-content);
         }
         &__container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 1170px;
-            width: 100%;
+            @include displaySet(flex, space-between);
+            @include width-height(100%, $max-width: 1170px);
             @media screen and (max-width: 992px) {
-                flex-direction: column;
-                height: fit-content;
+                @include displaySet($align-items: center, $flex-direction: column);
+                @include width-height($height: fit-content);
                 padding: 30px 0;
-                align-items: center;
             }
             @media screen and (max-width: 576px) {
-                width: 300px;
+                @include width-height(300px);
             }
             .container__bigimg {
-                max-width: 580px;
-                max-height: 440px;
-                position: relative;
+                @include width-height($max-width: 580px, $max-height: 440px);
+                @include position(relative);
                 margin-right: 10px;
                 @media screen and (max-width: 1200px) {
                     min-width: 480px;
@@ -760,47 +643,36 @@ a {
                     min-width: 300px;
                 }
                 img {
-                    width: 100%;
-                    height: 100%;
+                    @include width-height(100%, 100%);
                 }
                 &:hover {
                     cursor: pointer;
                     &:after {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
+                        @include pseudo();
+                        @include position($top: 0, $left: 0);
+                        @include width-height(100%, 440px, 580px);
                         background-image: url('../img/svg/icon-360-view.svg');
                         background-position: center;
                         background-repeat: no-repeat;
-                        max-width: 580px;
-                        width: 100%;
-                        height: 440px;
-                        display: block;
                     }
                 }
             }
             .container__smallimgs {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                max-width: 580px;
-                width: 100%;
+                @include displaySet(flex, space-between, $flex-direction: column);
+                @include width-height(100%, $max-width: 580px);
                 .levelimg {
-                    display: flex;
-                    justify-content: space-between;
+                    @include displaySet(flex, space-between);
                     @media screen and (max-width: 576px) {
-                        display: block;
+                        @include displaySet(block);
                     }
                     &:first-child {
                         margin-bottom: 10px;
                     }
                     .container__smallimg {
-                        max-width: 285px;
-                        max-height: 215px;
-                        position: relative;
+                        @include position(relative);
+                        @include width-height($max-width: 285px, $max-height: 215px);
                         @media screen and (max-width: 576px) {
-                            max-width: 300px;
+                            @include width-height($max-width: 300px);
                         }
                         &:first-child {
                             margin-right: 10px;
@@ -810,27 +682,20 @@ a {
                             }
                         }
                         img {
-                            width: 100%;
-                            height: 100%;
+                            @include width-height(100%, 100%);
                             @media screen and (max-width: 576px) {
-                                height: 215px;
-                                width: 300px;
+                                @include width-height(300px, 215px);
                             }
                         }
                         &:hover {
                             cursor: pointer;
                             &:after {
-                                content: '';
-                                position: absolute;
-                                top: 0;
-                                left: 0;
+                                @include pseudo();
+                                @include position($top: 0, $left: 0);
+                                @include width-height(100%, 215px, 285px);
                                 background-image: url('../img/svg/icon-360-view.svg');
                                 background-position: center;
                                 background-repeat: no-repeat;
-                                max-width: 285px;
-                                height: 215px;
-                                width: 100%;
-                                display: block;
                             }
                         }
                     }
@@ -847,69 +712,59 @@ a {
     }
 }
 #map {
+    @include width-height(100%, 700px);
     width: 100%;
     height: 700px;
     @media screen and (max-width: 1200px) {
-        height: 400px;
+        @include width-height($height: 400px);
     }
 }
 .footer {
+    @include position(relative);
     background: linear-gradient(45deg, rgba(85,183,255,1) 0%, rgba(126,90,255,1) 100%);
-    position: relative;
     .footbg {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 525px;
-        width: 100%;
+        @include position(absolute, $top: 0, $left: 0);
+        @include width-height(100%, 525px);
         object-fit: cover;
         opacity: 0.03;
         img {
-            width: 100%;
-            height: 100%;
+            @include width-height(100%, 100%);
         }
     }
 }
 .footer__block {
+    @include position(relative);
     padding: 200px calc(50vw - (780px / 2));
-    position: relative;
     @media screen and (max-width: 1200px) {
         padding: 90px calc(50vw - (780px / 2));
     }
     @media screen and (max-width: 576px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include displaySet(flex, $align-items: center, $flex-direction: column);
     }
     .block__content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1;
+        @include position($z_index: 1);
+        @include displaySet(flex, space-between, center);
         padding: 0 20px;
         @media screen and (max-width: 576px) {
-            flex-direction: column;
+            @include displaySet($flex-direction: column);
         }
         .nav__menu_2 {
+            @include width-height(160px);
             padding-left: 0;
-            width: 160px;
             @media screen and (max-width: 576px) {
                 padding-top: 15px;
             }
         }
     }
     .footer__textblock {
+        @include displaySet(flex, space-between, center);
+        @include width-height(420px);
         padding-left: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 420px;
         padding-top: 45px;
         font-size: 14px;
         @media screen and (max-width: 576px) {
-            flex-direction: column;
-            width: fit-content;
-            justify-content: center;
+            @include displaySet($justify-content: center, $flex-direction: column);
+            @include width-height(fit-content);
         }
         .withlove {
             @media screen and (max-width:576px) {
@@ -920,7 +775,7 @@ a {
                 font-size: 20px;
                 margin-right: 20px;
                 @media screen and (max-width: 576px) {
-                    display: none;
+                    @include displaySet(none);
                 }
             }
         }
@@ -928,81 +783,60 @@ a {
     
 }
 .formblock {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include сentering-xy();
+    @include position($top: -300px, $z_index: 1);
+    @include displaySet(flex, center, $flex-direction: column);
+    @include width-height(100%, 450px, 770px);
     padding: 90px 60px 80px;
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    margin-left: -385px;
-    top: -300px;
     background-color: #fff;
-    max-width: 770px;
-    width: 100%;
-    height: 450px;
     color: #2c4058;
     @media screen and (max-width: 1200px) {
+        @include width-height(100%, 380px, 670px);
         padding: 40px 25px 30px;
-        max-width: 670px;
-        width: 100%;
-        height: 380px;
     }
     @media screen and (max-width: 576px) {
-        height: 450px;
-        top: -370px;
+        @include position($top: -370px);
+        @include width-height($height: 450px);
         padding: 90px 5px 80px;
     }
     .formblock__container {
-        z-index: 1;
+        @include position($z_index: 1);
         @media screen and (max-width: 576px) {
             padding-top: 10px;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
+            @include displaySet($align-items: center, $justify-content: space-around, $flex-direction: column);
         }
     }
     .img-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        @include position(absolute, $bottom: 0, $left: 0, $z_index: -1);
         opacity: 0.07;
-        z-index: -1;
     }
     &__container {
-        display: flex;
-        justify-content: space-between;
+        @include displaySet(flex, space-between);
         padding-top: 55px;
         .textblock {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            @include displaySet(flex, space-between, $flex-direction:column);
             @media screen and (max-width: 576px) {
+                @include width-height(300px, 110px);
                 padding-top: 10px;
-                height: 110px;
-                width: 300px;
             }
             i {
                 margin-right: 5px;
             }
         }
         .form {
-            width: 310px;
-            height: 190px;
-            position: relative;
+            @include position(relative);
+            @include width-height(310px, 190px);
             padding-left: 10px;
             @media screen and (max-width: 576px) {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
+                @include displaySet(flex, space-around, $flex-direction:column);
+                @include width-height(300px);
                 padding-left: 0;
                 padding-top: 10px;
-                width: 300px;
             }
             .input {
+                @include width-height(100%, 25px);
                 border: none;
                 font-size: 18px;
-                position: relative;
                 color: #2c4058;
                 &::placeholder {
                     font-size: 18px;
@@ -1011,32 +845,23 @@ a {
                 &:focus {
                     outline: none;
                 }
-                
-                width: 100%;
-                height: 25px;
             }
             div {
-                position: relative;
+                @include position(relative);
                 &::after {
-                    position: absolute;
-                    top: 6px;
-                    content: '';
-                    width: 100%;
-                    height: 2px;
+                    @include pseudo();
+                    @include position($top: 6px);
+                    @include width-height(100%);
                     border-bottom: 2px solid #d5d9de;
-                    display: block;
                     @media screen and (max-width: 576px) {
-                        height: 0;
-                        top: -15px;
+                        @include position($top: -15px);
                     }
                 }
             }
             .input:focus + div::after {
-                position: absolute;
-                content: '';
-                width: 100%;
+                @include pseudo();
+                @include width-height(100%);
                 border-bottom: 2px solid #2c4058;
-                display: block;
             }
             .form__email {
                 margin-top: 20px;
@@ -1045,29 +870,23 @@ a {
                 }
             }
             .block__btn {
-                position: absolute;
-                width: 140px;
+                @include position(absolute, $bottom: 0, $right: 0);
+                @include width-height(140px);
                 text-transform: uppercase;
-                right: 0;
-                bottom: 0;
                 @media screen and (max-width: 576px) {
-                    position: relative;
+                    @include position(relative);
                     overflow: hidden;
                 }
                 &::after {
-                    left: 120%;
+                    @include position($left: 120%);
                     @media screen and (max-width: 576px) {
-                        left: -155%;
-                        top: 0;
-                        z-index: -1;                   
+                        @include position($top: 0, $left: -155%, $z_index: -1);
                     }
                 }
                 &::before {
-                    left: -160%;
+                    @include position($left: -160%);
                     @media screen and (max-width: 576px) {
-                        left: 120%;
-                        top: 0;           
-                        z-index: -1;        
+                        @include position($top: 0, $left: 120%, $z_index: -1);
                     }
                 }
                 &:hover {
@@ -1090,60 +909,49 @@ a {
 }
 @media screen and (max-width: 992px) {
     #nav {
-        position: absolute;
-        top: -50px;
-        right: 0;
-        height: auto;
-        @include width-height(50vw,100vh);
+        @include position(absolute, $top: -50px, $right: 0);
+        @include width-height(50vw,104vh);
+        @include displaySet($justify-content: center, $flex-direction:column);
         transform: translate(100vw, 0);
-        -ms-transform: translatex(-100vw);
         box-sizing: border-box;
         transition: width 475ms ease-out, transform 450ms ease, border-radius .8s .1s ease;
         border-bottom-left-radius: 100vw;
         background: rgba(255, 255, 255, 0.75);
-        flex-direction: column;
-        justify-content: center;
         padding-left: 0;
         @media screen and (max-width: 576px) {
             @include width-height(100vw,100vh);
         }
         .nav__menu {
-            flex-direction: column;
+            @include displaySet($justify-content: end, $flex-direction:column);
+            @include width-height($height: auto);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             pointer-events: auto;
-            justify-content: end;
-            height: auto;
             padding-top: 50px;
             .menu__item {
+                @include displaySet(flex, center, center);
+                @include width-height(100%, 50px);
                 list-style: none;
                 text-transform: uppercase;
-                pointer-events: auto;
                 white-space: nowrap;
                 box-sizing: border-box;
                 transform: translatex(100vw);
-                -ms-transform: translatex(-100vw);
-                width: 100%;
-                height: 50px;
                 margin-bottom: 10px;
-                display: flex;
-                justify-content: center;
-                align-items:center;
                 &::after {
-                    display: none;
+                    @include displaySet(none);
                 }
                 &:last-child {
                     margin-bottom: 2em;
                 }
                 .menu__link {
+                    @include displaySet(block);
                     text-decoration: none;
                     color: #333;
                     text-align: center;
-                    display: block;
                     font-size: calc(24px - .5vw);
                     &::before {
-                        display: none;
+                        @include displaySet(none);
                     }
                     &:hover {
                         cursor: pointer;
@@ -1165,7 +973,6 @@ a {
     input.hamburger {
         &:checked {
             & ~ #nav {
-                z-index: 3;
                 transform: translatex(0);
                 border-bottom-left-radius: 0;
                 .menu__item {
@@ -1188,74 +995,64 @@ a {
             }
             & ~ .menu-label>.close {
                 color: #333;
-                width: 100%;
+                @include width-height(100%);
             }
             & ~ .menu-label>.open {
                 color: #ffffff00;
-                width: 0;
+                @include width-height(0);
             }
         }
     }
     .menu-label {
-        position: absolute;
-        right: 25px;
-        top: 10px;
-        width: 50px;
-        height: 20px;
-        z-index: 3;
+        @include position(absolute, $top: 10px, $right: 25px, $z_index: 3);
+        @include width-height(50px, 20px);
         @media screen and (max-width: 576px) {
-            top: 0;
+            @include position($top: 0);
         }
         .close,
         .open {
-            width: 50px;
-            height: 20px;
+            @include position(absolute);
+            @include width-height(50px, 20px);
             text-transform: uppercase;
             font-size: .8em;
             text-align: center;
-            position: absolute;
             transform: translateY(50px);
-            text-align: center;
             overflow: hidden;
             transition: width .25s .35s, color .45s .35s;
         }
         .close {
+            @include position($right: 0);
+            @include width-height(0);
             color: #00000000;
-            right: 0;
-            width: 0;
         }
         .open {
+            @include width-height(100%);
             color: $text;
-            width: 100%;
         }
     }
     label.hamburger {
-        z-index: 9999;
-        position: relative;
-        display: block;
+        @include displaySet(block);
+        @include position(relative, $z_index: 4);
         @include width-height(50px, 50px);
         @media screen and (max-width: 576px) {
-            height: 35px;
+            @include width-height($height: 35px);
         }
         &:hover {
-          cursor: pointer;
+            cursor: pointer;
         }
         > i {
-            position: absolute;
+            @include position(absolute, $top: 50%);
             @include width-height(100%, 2px);
-            top: 50%;
             background-color: $text;
             pointer-events: auto;
             transition-duration: .35s;
             transition-delay: .35s;
             &:before,
             &:after {
-                position: absolute;
-                display: block;
+                @include pseudo();
                 @include width-height(100%, 2px);
-                left: 50%;
-                background-color: $text;
-                content: "";
+                @include position($left: 50%);
+                background-color: #fff;
                 transition: transform 0.35s;
                 transform-origin: 50% 50%;
             }

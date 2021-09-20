@@ -1,4 +1,41 @@
-@mixin width-height($width, $height) {
+@mixin width-height($width: null, $height: null, $max-width: null, $max-height: null) {
+    max-width: $max-width;
+    max-height: $max-height;
     width: $width;
     height: $height;
+}
+
+@mixin сentering-xy() { 
+    position: absolute; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin font-source-sans($size: null, $colour: null, $weight: null, $lh: null) {
+    font-family: 'GothamBook', sans-serif;
+    font-size: $size;
+    color: $colour;
+    font-weight: $weight;
+    line-height: $lh;
+}
+@mixin position($position: null, $top: null, $right: null, $bottom: null, $left: null, $z_index: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z_index;
+}
+@mixin displaySet($display: null, $justify-content: null, $align-items: null, $flex-direction: null) {
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-direction: $flex-direction;
 }
