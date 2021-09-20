@@ -7,6 +7,7 @@
 body {
     color: #fff;
     font-family: 'GothamBook', sans-serif;
+    overflow: hidden;
 }
 a {
     @include displaySet(flex);
@@ -38,11 +39,8 @@ a {
     @include position(relative);
     @include width-height($height: 100vh);
     background: linear-gradient(45deg, rgba(85,183,255,1) 0%, rgba(126,90,255,1) 100%);
-    @media screen and (max-width: 576px) {
-        @include width-height($height: 70vh);
-    }
     .header__menu {
-        @include сentering-xy();
+        @include сentering-x();
         @include position($top: 50px, $z_index: 1);
         @include displaySet(flex, space-between);
         @include width-height(100%, $max-width: 1325px);
@@ -506,7 +504,7 @@ a {
             @include width-height(100%, 515px);
             overflow: hidden;
             .slick-track {
-                @include displaySet(flex !important, space-between);
+                @include displaySet(flex !important, space-around);
                 @include width-height($height: 515px);
                 .item {
                     @include width-height(370px !important, 515px);
@@ -783,8 +781,8 @@ a {
     
 }
 .formblock {
-    @include сentering-xy();
-    @include position($top: -300px, $z_index: 1);
+    @include сentering-x();
+    @include position(absolute, $top: -300px, $z_index: 1);
     @include displaySet(flex, center, $flex-direction: column);
     @include width-height(100%, 450px, 770px);
     padding: 90px 60px 80px;
