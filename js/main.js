@@ -1,5 +1,7 @@
 'use strict';
 
+let answerBlock = $('.answer-block');
+
 $(document).ready(function() {
     $('.slider1').slick({
         slidesToShow: 1,
@@ -180,8 +182,13 @@ $(document).ready(function() {
         $.ajax({
             type: 'GET',
             data: $(this).serialize(),
+            success: function(result) {
+            }
         }).done(function () {
             $('.formblock').hide();
+            let name = $('.form__name').val();
+            $('.answer-block').css('display','flex');
+            $('.answer-block__title').text(name + ' ,thanks for visit our company, we will contact you on your email.');
         });
         return false;
     });
@@ -194,4 +201,11 @@ $(document).click(function (e) {
     if (checked === true && !menu.is(e.target) && menu.has(e.target).length === 0) {
         $('#hamburger').prop('checked', false);
     }
+    if (!answerBlock.is(e.target) && answerBlock.has(e.target).length === 0) {
+        answerBlock.css('display', 'none');
+    }
+})
+$('.ok-btn').on('click', function(e) {
+    e.preventDefault();
+    answerBlock.css('display', 'none');
 })
